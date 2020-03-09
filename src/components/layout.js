@@ -1,7 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import '../styles/index.scss'
 import { rhythm, scale } from "../utils/typography"
+import { Container, Row, Col } from 'reactstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -30,12 +32,7 @@ const Layout = ({ location, title, children }) => {
     )
   } else {
     header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
+      <h3>
         <Link
           style={{
             boxShadow: `none`,
@@ -50,22 +47,20 @@ const Layout = ({ location, title, children }) => {
     )
   }
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
-    </div>
+
+    <Container>
+      <Row>
+        <Col>
+          <header>{header}</header>
+          <main>{children}</main>
+          <footer>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
