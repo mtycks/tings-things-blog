@@ -51,7 +51,7 @@ const Layout = ({ location, title, children }) => {
     <Container>
       <Row>
         <Col>
-          <header>{header}</header>
+          <header>{header}...</header>
           <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with
