@@ -31,7 +31,8 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `maven pro\:300,400,400i,700` // you can also specify font weights and styles
+          `maven pro\:300,400,400i,700`, // you can also specify font weights and styles
+          `rajdhani\:400`
         ],
         display: 'swap'
       }
@@ -79,13 +80,7 @@ module.exports = {
         icon: `content/assets/tings-things-icon.png`,
       },
     },
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    `gatsby-plugin-react-helmet`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

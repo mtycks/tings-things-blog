@@ -1,63 +1,50 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
 import Bio from "../components/bio"
+import Img from 'gatsby-image'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import { Container, Row, Col } from 'reactstrap'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
+  const isBlog = true
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={siteTitle} isBlog={isBlog}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
       <article>
-        <header>
-          <h1
-            style={{
-              marginTop: rhythm(1),
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-            }}
-          >
-            {post.frontmatter.date}
-          </p>
+        <header className="blog-post-header">
+          <Img alt={post.frontmatter.title} fluid={post.frontmatter.full_img.childImageSharp.fluid} />
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <footer>
-          <Bio />
-        </footer>
+        
+        <Container className="blog-post-content">
+          <Row>
+            <Col lg={{size:8, offset:2}} md={{size:10, offset:1}}>
+
+              <section className="blog-section">
+                <p className="date">
+                  {post.frontmatter.date}
+                </p>
+                <h1>
+                  {post.frontmatter.title}
+                </h1>
+                <div dangerouslySetInnerHTML={{ __html: post.html }} />
+              </section>
+
+            </Col>
+          </Row>
+        </Container>
+
       </article>
 
       <nav>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+        <ul>
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
@@ -95,6 +82,14 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        full_img{
+          publicURL
+          childImageSharp{
+            fluid(maxWidth:800, quality:100){
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

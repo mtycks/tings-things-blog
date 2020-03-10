@@ -1,46 +1,51 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
-import Bio from "../components/bio"
+import Img from 'gatsby-image'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import { Container, Row, Col } from 'reactstrap'
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
-    </Layout>
+
+    <Container>
+      <Row>
+        <Col lg={{size:8, offset:2}} md={{size:10, offset:1}}>
+
+        <Layout location={location} title={siteTitle}>
+            <SEO title="All posts" />
+            {posts.map(({ node }) => {
+              const title = node.frontmatter.title || node.fields.slug
+              return (
+                <article key={node.fields.slug} className="blog-card">
+                  <Link to={node.fields.slug}>
+                    <Img alt={node.frontmatter.title} fluid={node.frontmatter.full_img.childImageSharp.fluid} />
+                  </Link>
+
+                  <div className="blog-card-details">
+
+                    <header>
+                      
+                      <h3>{title}</h3>
+
+                    </header>
+
+                  </div>
+
+                </article>
+              )
+            })}
+          </Layout>
+
+        </Col>
+      </Row>
+    </Container>
+
+
+
   )
 }
 
@@ -64,6 +69,13 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            full_img{
+              childImageSharp{
+                fluid(maxWidth:1000, quality:75){
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
           }
         }
       }

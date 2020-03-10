@@ -1,7 +1,8 @@
 ---
-title: Hello World
-date: "2015-05-01T22:12:03.284Z"
-description: "Hello World"
+title: Five Best Baby Cosleepers on Amazon 2020
+date: "2020-03-09T22:12:03.284Z"
+description: "Here are the five best baby cosleepers on Amazon in 2020 based on customer reviews."
+full_img: ./full_img.jpg
 ---
 
 This is my first post on my new fake blog! How exciting!

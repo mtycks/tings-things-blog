@@ -1,7 +1,152 @@
 body{
+    background-color:#F7F7F7 !important;
+}
+body,
+body p{
     color:#333333;
+    font-family:'Maven Pro', sans-serif;
 }
 
-h1,h2,h3,h4,h5{
-    font-family:'Maven Pro', sans-serif;
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+    font-weight:700 !important;
+}
+
+//Nav Header Styles
+.navbar-contained{
+    margin-bottom:1rem;
+}
+
+.navbar-blog{
+    position: relative;
+}
+
+    .navbar-blog .navbar{
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        z-index:100;
+    }
+
+.navbar .navbar-brand{
+    font-family:'Rajdhani';
+    font-weight:400;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: uppercase;
+    font-size:1.25rem;
+    width: 100%;
+    justify-content: left;
+}
+
+    .navbar-blog .navbar .navbar-brand{
+        margin-left:1rem;
+        max-width: 300px;
+    }
+
+
+
+.navbar.navbar-light .navbar-brand{
+    color:$dark_grey;
+}
+
+    .navbar-blog .navbar .navbar-brand{
+        color:#FFFFFF;
+    }
+
+.navbar-toggler{
+    position: absolute;
+    top: 1.3125rem;
+    right: 1rem;
+}
+
+.navbar .navbar-toggler{
+    border:none;
+}
+
+    .navbar-blog .navbar .navbar-toggler-icon{
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
+
+.navbar .navbar-nav{
+    text-align:center;
+}
+
+// Blog Card Styles
+.blog-card{
+    background-color:$dark_grey;
+    border-radius:20px;
+    margin-bottom:3rem;
+    overflow:hidden;
+    position: relative;
+}
+
+    .blog-card .gatsby-image-wrapper{
+        opacity:.5;
+    }
+
+    .blog-card-details{
+        color:#FFFFFF;
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        pointer-events:none;
+    }
+
+    .blog-card-details h3{
+        font-size:1.5rem;
+        margin-bottom:0;
+        text-shadow:1px 0px 5px rgba(0,0,0,.4);
+    }
+
+    .blog-card-details p{
+        color:#FFFFFF;
+    }
+
+//Blog Post Styles
+.blog-post-header{
+    background-color:$dark_grey;
+    position: relative;
+    z-index:5;
+}
+
+    .blog-post-header .gatsby-image-wrapper{
+        opacity:0.3;
+    }
+
+    .blog-post-header .gatsby-image-wrapper div:first-child{
+        padding-bottom:75% !important;
+    }
+
+.blog-post-content{
+    background-color:#F7F7F7;
+    border-radius:20px;
+    margin-top:-2rem;
+    position: relative;
+    z-index:10;
+}
+
+    .blog-section{
+        padding:1.5rem 1rem;
+    }
+        .blog-section p.date{
+            font-size:.85rem;
+            margin-bottom:0;
+            text-transform:uppercase;
+        }
+
+        .blog-section h1{
+            font-size:1.75rem;
+            margin-bottom:2rem;
+        }
+
+
+//Product Call Outs
+.product-call-out{
+    background-color:#FFFFFF;
+    border:10px solid #684789;
+    border-radius:20px;
+    margin-bottom:1rem;
+    padding:3rem;
 }
