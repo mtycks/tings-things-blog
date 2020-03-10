@@ -6,23 +6,7 @@
  */
 
 import React from "react"
-import { graphql } from "gatsby"
-import Image from "gatsby-image"
-
-const AmazonFeature = (props) => {
-
-  console.log(props)
-
-  return (
-    <div className="product-call-out">
-      <div className="product-img">
-        something
-      </div>
-      <div className="product-details">
-        title
-      </div>
-    </div>
-  )
-}
-
+const AmazonFeature = ({ title, children }) => (
+  <div className="product-call-out">{children} {title}</div>
+)
 export default AmazonFeature

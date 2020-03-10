@@ -1,14 +1,13 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Bio from "../components/bio"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 import Img from 'gatsby-image'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Container, Row, Col } from 'reactstrap'
-import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = this.props.data.mdx
+  const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
   const isBlog = true
@@ -35,6 +34,27 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 <h1>
                   {post.frontmatter.title}
                 </h1>
+                <p>{post.frontmatter.intro}</p>
+
+                <ul className="list-unstyled">
+                    {post.frontmatter.products.map(product => (
+                        <li key={product.name}>
+                  
+                          <div className="product-call-out">
+                            <div className="product-img">
+                              <Img alt={product.name} fluid={product.img.childImageSharp.fluid} />
+                            </div>
+                            <div className="product-details">
+                                {product.name}
+                            </div>
+                          </div>
+
+                          <p>{product.description}</p>
+                  
+                        </li>
+                    ))}
+                </ul>
+
                 <MDXRenderer>{post.body}</MDXRenderer>
               </section>
 
@@ -83,6 +103,19 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        intro
+        products{
+          name
+          link
+          description
+          img{
+            childImageSharp{
+              fluid(maxWidth:800, quality:100){
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
         full_img{
           publicURL
           childImageSharp{

@@ -68,7 +68,7 @@ module.exports = {
         trackingId: `UA-130003690-7`,
       },
     },
-    `gatsby-plugin-feed-mdx`
+    `gatsby-plugin-feed-mdx`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
