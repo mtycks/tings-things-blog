@@ -31,21 +31,31 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 <p className="date">
                   {post.frontmatter.date}
                 </p>
+
                 <h1>
                   {post.frontmatter.title}
                 </h1>
-                <p>{post.frontmatter.intro}</p>
 
-                <ul className="list-unstyled">
-                    {post.frontmatter.products.map(product => (
+                {post.frontmatter.intro && 
+                  <p className="blog-intro">{post.frontmatter.intro}</p>
+                }
+
+                {post.frontmatter.products && 
+                <ul className="product-list list-unstyled">
+                    {post.frontmatter.products.map((product,index) => (
                         <li key={product.name}>
                   
-                          <div className="product-call-out">
+                          <div className={ `product-call-out product-${index+1}` }>
+                            <div className="pco-label">{index==0 ? 'Ting\'s Pick' : `No. ${index+1}`}</div>
+                            
                             <div className="product-img">
-                              <Img alt={product.name} fluid={product.img.childImageSharp.fluid} />
+                              <a href={product.link}>
+                                <Img alt={product.name} fluid={product.img.childImageSharp.fluid} />
+                              </a>
                             </div>
                             <div className="product-details">
-                                {product.name}
+                                <h5>{product.name}</h5>
+                                <a href={product.link} className="btn btn-success btn-block">View on Amazon</a>
                             </div>
                           </div>
 
@@ -54,6 +64,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                         </li>
                     ))}
                 </ul>
+                }
 
                 <MDXRenderer>{post.body}</MDXRenderer>
               </section>

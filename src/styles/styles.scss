@@ -138,15 +138,79 @@ body p{
 
         .blog-section h1{
             font-size:1.75rem;
-            margin-bottom:2rem;
+            margin-bottom:1rem;
         }
+
+        .blog-section p.blog-intro{
+            display:block;
+            padding-bottom:2rem;
+            margin-bottom:3rem;
+            border-bottom:1px solid #e0e0e0;
+        }
+
+ul.product-list li{
+    padding-bottom:3rem;
+    margin-bottom:4rem;
+    border-bottom:1px solid #e0e0e0;
+}
 
 
 //Product Call Outs
 .product-call-out{
     background-color:#FFFFFF;
-    border:10px solid #684789;
+    border:10px solid $purple;
     border-radius:20px;
     margin-bottom:1rem;
-    padding:3rem;
+    padding:2rem;
+    position:relative;
 }
+
+    .product-call-out.product-1{
+        border-color:$gold;
+        padding-top:4rem;
+    }
+
+    .pco-label{
+        background-color:$purple;
+        color:#FFFFFF;
+        font-weight:bold;
+        position:absolute;
+        left:0;
+        top:0;
+        padding:5px 20px;
+        border-radius:0 0 10px 0;
+        z-index:10;
+    }
+
+    .product-call-out.product-1 .pco-label{
+        background-color:$gold;
+        width:100%;
+        text-align:center;
+        border-radius:10px 10px 0 0;
+        font-size:1.5rem;
+        text-transform:uppercase;
+        font-weight:normal;
+        font-family:'Rajdhani';
+        top:-10px;
+    }
+
+    .product-img{
+        margin-bottom:10px;
+        position:relative;
+        z-index:5;
+    }
+
+    .product-details{
+        text-align:center;
+        position:relative;
+        z-index:5;
+    }
+
+        .product-details h5{
+            margin-bottom:1rem;
+        }
+
+    .product-call-out .btn-success{
+        background-color: $green !important;
+        border-color: $green !important;
+    }
