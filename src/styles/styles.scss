@@ -110,6 +110,7 @@ main{
         color:$dark_grey;
         display:flex;
         flex-direction:column;
+        font-size:.9rem;
         align-items:center;
         justify-content:center;
         flex:1;
@@ -123,7 +124,7 @@ main{
     }
 
     #fixed-nav li a svg{
-        margin-bottom:5px;
+        margin-bottom:1px;
     }
 
 // Blog Card Styles

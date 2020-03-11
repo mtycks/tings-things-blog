@@ -3,7 +3,7 @@ import '../styles/index.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import Image from 'gatsby-image'
-import { Navbar, Container, Row, Col } from 'reactstrap';
+import { Navbar } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faUserCircle, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
@@ -70,20 +70,7 @@ const Layout = ({ children, isBlog }) => {
       </div>
 
       <main>{children}</main>
-      <footer>
 
-      <Container>
-          <Row>
-            <Col lg={{size:8, offset:2}} md={{size:10, offset:1}}>
-
-              © {new Date().getFullYear()}, Built with
-              {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
-
-            </Col>
-          </Row>
-        </Container>
-      </footer>
     </>
   )
 }
