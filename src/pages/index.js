@@ -16,7 +16,7 @@ const BlogIndex = ({ data, location }) => {
         <Col lg={{size:8, offset:2}} md={{size:10, offset:1}}>
 
         <Layout location={location} title={siteTitle}>
-            <SEO title="All posts" />
+            <SEO title="Welcome to Ting's Things!" />
             <div className="homepage-cards">
               {posts.map(({ node }) => {
                 const title = node.frontmatter.title || node.fields.slug
