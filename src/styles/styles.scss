@@ -4,7 +4,7 @@ body{
 body,
 body p{
     color:#333333;
-    font-family:'Maven Pro', sans-serif;
+    font-family:'Maven Pro', sans-serif !important;
 }
 
 //Padding bottom to account for fixed nav 
@@ -76,6 +76,54 @@ main{
 
 .navbar .navbar-nav{
     text-align:center;
+}
+//Homepage Marquee Styles
+.hp-marquee{
+    background-image:url('topography-grey.jpg');
+    background-repeat:repeat;
+    position: relative;
+    z-index: 1;
+}
+
+    .hp-marquee-inner{
+        background-image:url('purple-blob.png');
+        background-repeat: no-repeat;
+        background-position: 80vw -90px;
+        color: #FFFFFF;
+        padding:15px;
+        background-size:300px auto;
+        position: relative;;
+    }
+
+    .hp-marquee-inner::after{
+        background-image:url('purple-blob.png');
+        background-repeat: no-repeat;
+        background-position: -160px 90px;
+        color: #FFFFFF;
+        padding:15px;
+        background-size:300px auto;
+        content: '';
+        position: absolute;
+        height:100%;
+        width:100%;
+        top:0;
+        left:0;
+    }
+
+    .hp-marquee-inner h2{
+        font-size:1.25rem;
+        margin-bottom:0;
+        padding:1.5rem 0 4rem;
+        text-align:center;
+    }
+
+.hp-container{
+    padding-top: 15px;
+    border-radius: 20px 20px 0 0;
+    margin-top: -15px;
+    z-index: 10;
+    position: relative;
+    background-color: #e6e9ee;
 }
 
 //Fixed Navigation Styles
@@ -297,4 +345,14 @@ ul.product-list li{
         padding-bottom:40% !important;
     }
 
+}
+
+@media(min-width:768px){
+    .hp-container{
+        margin-top:0;
+    }
+
+    .hp-marquee-inner h2{
+        font-size:2rem;
+    }
 }

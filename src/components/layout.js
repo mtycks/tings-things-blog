@@ -37,7 +37,7 @@ const Layout = ({ children, isBlog }) => {
   return (
 
     <>
-    
+
       <div className="fixed-nav-holder">
         <nav id="fixed-nav">
           <ul className="list-unstyled">
@@ -63,11 +63,13 @@ const Layout = ({ children, isBlog }) => {
         </nav>
       </div>
 
+      {isBlog &&
       <div className={navbarClass}>
         <Navbar color={navbarBG} light={navbarLight} dark={navbarDark} expand="xl">
           <Link to="/" className="navbar-brand"><Image fluid={navbarLogo} imgStyle={{objectFit: "contain",objectPosition: "50% 50%",}} style={{width: "40px", marginRight: "10px", display: "inline-block"}} /> Ting's Things</Link>
         </Navbar>
       </div>
+      }
 
       <main>{children}</main>
 

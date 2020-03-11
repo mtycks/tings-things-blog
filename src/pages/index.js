@@ -11,41 +11,49 @@ const BlogIndex = ({ data, location }) => {
 
   return (
 
-    <Container>
-      <Row>
-        <Col lg={{size:8, offset:2}} md={{size:10, offset:1}}>
-
         <Layout location={location} title={siteTitle}>
             <SEO title="Welcome to Ting's Things!" />
-            <div className="homepage-cards">
-              {posts.map(({ node }) => {
-                const title = node.frontmatter.title || node.fields.slug
-                return (
-                  <article key={node.fields.slug} className="blog-card">
-                    <Link to={node.fields.slug}>
-                      <Img alt={node.frontmatter.title} fluid={node.frontmatter.full_img.childImageSharp.fluid} />
-                    </Link>
 
-                    <div className="blog-card-details">
+            <div className="hp-marquee">
+              <div className="hp-marquee-inner">
+                <Img fluid={data.main_logo_white.childImageSharp.fluid} imgStyle={{objectFit: "contain",objectPosition: "50% 50%",}} style={{width: "40px", marginRight: "10px", display: "inline-block"}} />
+                <h2>&ldquo;Let me be every TING you need.&rdquo;</h2>
 
-                      <header>
-                        
-                        <p className="date">{node.frontmatter.date}</p>
-                        <h3>{title}</h3>
-
-                      </header>
-
-                    </div>
-
-                  </article>
-                )
-              })}
+              </div>
             </div>
+
+            <Container className="hp-container">
+              <Row>
+                <Col lg={{ size: 8, offset: 2 }} md={{ size: 10, offset: 1 }}>
+                  <div className="homepage-cards">
+                    {posts.map(({ node }) => {
+                      const title = node.frontmatter.title || node.fields.slug;
+                      return (
+                        <article key={node.fields.slug} className="blog-card">
+                          <Link to={node.fields.slug}>
+                            <Img
+                              alt={node.frontmatter.title}
+                              fluid={node.frontmatter.full_img.childImageSharp.fluid}
+                            />
+                          </Link>
+
+                          <div className="blog-card-details">
+                            <header>
+                              <p className="date">{node.frontmatter.date}</p>
+                              <h3>{title}</h3>
+                            </header>
+                          </div>
+                        </article>
+                      )
+                    })}
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+
           </Layout>
 
-        </Col>
-      </Row>
-    </Container>
+
 
 
 
@@ -59,6 +67,13 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    main_logo_white: file(absolutePath: { regex: "/tt-nav-logo-white.png/" }) {
+      childImageSharp {
+        fluid(maxWidth: 75, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
       }
     }
     allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
