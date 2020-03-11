@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Img from 'gatsby-image'
 import Layout from "../components/layout"
@@ -12,7 +12,6 @@ import { faAmazon } from '@fortawesome/free-brands-svg-icons'
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
   const isBlog = true
 
   return (
@@ -26,9 +25,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <Img alt={post.frontmatter.title} fluid={post.frontmatter.full_img.childImageSharp.fluid} />
         </header>
         
-        <Container className="blog-post-content">
+        <Container>
           <Row>
-            <Col lg={{size:8, offset:2}} md={{size:10, offset:1}}>
+            <Col className="blog-post-content" lg={{size:8, offset:2}} md={{size:10, offset:1}}>
 
               <section className="blog-section">
                 <p className="date">
@@ -81,24 +80,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
       </article>
 
-      <nav>
-        <ul>
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
     </Layout>
   )
 }

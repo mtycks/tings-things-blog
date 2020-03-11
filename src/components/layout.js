@@ -1,16 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import '../styles/index.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import Image from 'gatsby-image'
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  Nav,
-  NavItem,
-  NavLink
-} from 'reactstrap';
+import { Navbar, Container, Row, Col } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faUserCircle, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 const Layout = ({ children, isBlog }) => {
 
@@ -32,10 +27,6 @@ const Layout = ({ children, isBlog }) => {
       }
     }
   `)
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
   
   const navbarLogo = (isBlog) ? data.main_logo_white.childImageSharp.fluid : data.main_logo.childImageSharp.fluid
   const navbarClass = (isBlog) ? 'navbar-blog' : 'navbar-contained'
@@ -47,16 +38,51 @@ const Layout = ({ children, isBlog }) => {
 
     <>
     
+      <div className="fixed-nav-holder">
+        <nav id="fixed-nav">
+          <ul className="list-unstyled">
+            <li>
+              <Link to="/" activeClassName="active">
+                <FontAwesomeIcon icon={faHome} />
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" activeClassName="active">
+                <FontAwesomeIcon icon={faUserCircle} />
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" activeClassName="active">
+                <FontAwesomeIcon icon={faEnvelope} />
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
       <div className={navbarClass}>
         <Navbar color={navbarBG} light={navbarLight} dark={navbarDark} expand="xl">
           <Link to="/" className="navbar-brand"><Image fluid={navbarLogo} imgStyle={{objectFit: "contain",objectPosition: "50% 50%",}} style={{width: "40px", marginRight: "10px", display: "inline-block"}} /> Ting's Things</Link>
         </Navbar>
       </div>
+
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+
+      <Container>
+          <Row>
+            <Col lg={{size:8, offset:2}} md={{size:10, offset:1}}>
+
+              © {new Date().getFullYear()}, Built with
+              {` `}
+              <a href="https://www.gatsbyjs.org">Gatsby</a>
+
+            </Col>
+          </Row>
+        </Container>
       </footer>
     </>
   )

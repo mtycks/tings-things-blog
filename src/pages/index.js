@@ -17,27 +17,30 @@ const BlogIndex = ({ data, location }) => {
 
         <Layout location={location} title={siteTitle}>
             <SEO title="All posts" />
-            {posts.map(({ node }) => {
-              const title = node.frontmatter.title || node.fields.slug
-              return (
-                <article key={node.fields.slug} className="blog-card">
-                  <Link to={node.fields.slug}>
-                    <Img alt={node.frontmatter.title} fluid={node.frontmatter.full_img.childImageSharp.fluid} />
-                  </Link>
+            <div className="homepage-cards">
+              {posts.map(({ node }) => {
+                const title = node.frontmatter.title || node.fields.slug
+                return (
+                  <article key={node.fields.slug} className="blog-card">
+                    <Link to={node.fields.slug}>
+                      <Img alt={node.frontmatter.title} fluid={node.frontmatter.full_img.childImageSharp.fluid} />
+                    </Link>
 
-                  <div className="blog-card-details">
+                    <div className="blog-card-details">
 
-                    <header>
-                      
-                      <h3>{title}</h3>
+                      <header>
+                        
+                        <p className="date">{node.frontmatter.date}</p>
+                        <h3>{title}</h3>
 
-                    </header>
+                      </header>
 
-                  </div>
+                    </div>
 
-                </article>
-              )
-            })}
+                  </article>
+                )
+              })}
+            </div>
           </Layout>
 
         </Col>
@@ -66,7 +69,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "MMMM D, YYYY")
             title
             description
             full_img{
