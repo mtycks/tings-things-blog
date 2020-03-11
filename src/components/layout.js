@@ -50,14 +50,6 @@ const Layout = ({ children, isBlog }) => {
       <div className={navbarClass}>
         <Navbar color={navbarBG} light={navbarLight} dark={navbarDark} expand="xl">
           <Link to="/" className="navbar-brand"><Image fluid={navbarLogo} imgStyle={{objectFit: "contain",objectPosition: "50% 50%",}} style={{width: "40px", marginRight: "10px", display: "inline-block"}} /> Ting's Things</Link>
-          <NavbarToggler onClick={toggle} color="white" />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavLink href="/tags/">Tags</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
         </Navbar>
       </div>
       <main>{children}</main>

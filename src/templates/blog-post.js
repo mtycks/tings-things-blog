@@ -5,6 +5,9 @@ import Img from 'gatsby-image'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Container, Row, Col } from 'reactstrap'
+import StarRating from '../components/star-rating'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAmazon } from '@fortawesome/free-brands-svg-icons'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -43,10 +46,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 {post.frontmatter.products && 
                 <ul className="product-list list-unstyled">
                     {post.frontmatter.products.map((product,index) => (
-                        <li key={product.name}>
+                        <li key={index}>
                   
                           <div className={ `product-call-out product-${index+1}` }>
-                            <div className="pco-label">{index==0 ? 'Ting\'s Pick' : `No. ${index+1}`}</div>
+                            <div className="pco-label">{index===0 ? 'Ting\'s Pick' : `No. ${index+1}`}</div>
                             
                             <div className="product-img">
                               <a href={product.link}>
@@ -55,11 +58,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                             </div>
                             <div className="product-details">
                                 <h5>{product.name}</h5>
-                                <a href={product.link} className="btn btn-success btn-block">View on Amazon</a>
+                                <StarRating count={product.starsCount} stars={product.stars} />
+                                <a href={product.link} className="btn btn-success btn-block"><FontAwesomeIcon icon={faAmazon} size="lg" /> View on Amazon</a>
                             </div>
                           </div>
 
-                          <p>{product.description}</p>
+                          {product.descriptions.map((description,index) => (
+                            <p key={index} dangerouslySetInnerHTML={{ __html:description }} />
+                          ))}
                   
                         </li>
                     ))}
@@ -118,7 +124,9 @@ export const pageQuery = graphql`
         products{
           name
           link
-          description
+          descriptions
+          stars
+          starsCount
           img{
             childImageSharp{
               fluid(maxWidth:800, quality:100){
