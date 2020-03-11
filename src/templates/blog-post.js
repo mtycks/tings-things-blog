@@ -5,9 +5,7 @@ import Img from 'gatsby-image'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Container, Row, Col } from 'reactstrap'
-import StarRating from '../components/star-rating'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAmazon } from '@fortawesome/free-brands-svg-icons'
+import ProductCallout from '../components/product-callout'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -19,6 +17,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        image={post.frontmatter.full_img.publicURL}
       />
       <article>
         <header className="blog-post-header">
@@ -37,6 +36,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 <h1>
                   {post.frontmatter.title}
                 </h1>
+                
+                {post.frontmatter.disclaimer && 
+                  <p><small><em>{post.frontmatter.disclaimer}</em></small></p>
+                }
 
                 {post.frontmatter.intro && 
                   <p className="blog-intro">{post.frontmatter.intro}</p>
@@ -46,21 +49,13 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 <ul className="product-list list-unstyled">
                     {post.frontmatter.products.map((product,index) => (
                         <li key={index}>
-                  
-                          <div className={ `product-call-out product-${index+1}` }>
-                            <div className="pco-label">{index===0 ? 'Ting\'s Pick' : `No. ${index+1}`}</div>
-                            
-                            <div className="product-img">
-                              <a href={product.link}>
-                                <Img alt={product.name} fluid={product.img.childImageSharp.fluid} />
-                              </a>
-                            </div>
-                            <div className="product-details">
-                                <h5>{product.name}</h5>
-                                <StarRating count={product.starsCount} stars={product.stars} />
-                                <a href={product.link} className="btn btn-success btn-block"><FontAwesomeIcon icon={faAmazon} size="lg" /> View on Amazon</a>
-                            </div>
-                          </div>
+                          
+                          <Row>
+                            <Col lg={{size:8, offset:2}}>
+                              <ProductCallout product={product} index={index} />
+                            </Col>
+                          </Row>
+                          
 
                           {product.descriptions.map((description,index) => (
                             <p key={index} dangerouslySetInnerHTML={{ __html:description }} />
@@ -102,6 +97,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         intro
+        disclaimer
         products{
           name
           link
