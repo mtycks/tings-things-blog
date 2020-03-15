@@ -14,11 +14,15 @@ const BlogIndex = ({ data, location }) => {
         <Layout location={location} title={siteTitle}>
             <SEO title="Welcome to Ting's Things!" />
 
-            <div className="hp-marquee">
-              <div className="hp-marquee-inner">
-                <Img fluid={data.main_logo_white.childImageSharp.fluid} imgStyle={{objectFit: "contain",objectPosition: "50% 50%",}} style={{width: "40px", marginRight: "10px", display: "inline-block"}} />
+            <div className="main-header">
+              <Img alt="Header background" fluid={data.header_bg.childImageSharp.fluid} />
+              <div className="main-logo">
+                <Img fluid={data.main_logo_white.childImageSharp.fluid} imgStyle={{objectFit: "contain",objectPosition: "50% 50%",}} style={{width: "40px", display: "inline-block"}} />
+                </div>
+              <div className="main-header-inner">
+                <div className="main-header-text">
                 <h2>&ldquo;Let me be every TING you need.&rdquo;</h2>
-
+                </div>
               </div>
             </div>
 
@@ -68,6 +72,13 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    header_bg: file(absolutePath: { regex: "/header-bg.jpg/" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
       }
     }
     main_logo_white: file(absolutePath: { regex: "/tt-nav-logo-white.png/" }) {
