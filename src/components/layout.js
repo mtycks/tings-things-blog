@@ -48,15 +48,9 @@ const Layout = ({ children, isBlog }) => {
               </Link>
             </li>
             <li>
-              <Link to="/about" activeClassName="active">
+              <Link to="/welcome-to-tings-things" activeClassName="active">
                 <FontAwesomeIcon icon={faUserCircle} />
                 About
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" activeClassName="active">
-                <FontAwesomeIcon icon={faEnvelope} />
-                Contact
               </Link>
             </li>
           </ul>
