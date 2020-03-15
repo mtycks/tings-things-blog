@@ -13,8 +13,8 @@ import { faAmazon } from '@fortawesome/free-brands-svg-icons'
 
 const ProductCallout = ({ product, index }) => {
   return(
-    <div className={ `product-call-out product-${index+1}` }>
-      <div className="pco-label">{index===0 ? 'Ting\'s Pick' : `No. ${index+1}`}</div>
+    <div className={ product.featured === "1" ? `product-call-out product-featured` : `product-call-out product-${index+1}` }>
+      <div className="pco-label">{product.featured === "1" ? 'Ting\'s Pick' : `No. ${index+1}`}</div>
       
       <div className="product-img">
         <a href={product.link}>

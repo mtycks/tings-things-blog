@@ -322,7 +322,7 @@ ul.product-list li{
     position:relative;
 }
 
-    .product-call-out.product-1{
+    .product-call-out.product-featured{
         border-color:$gold;
         padding-top:4rem;
     }
@@ -339,7 +339,7 @@ ul.product-list li{
         z-index:10;
     }
 
-    .product-call-out.product-1 .pco-label{
+    .product-call-out.product-featured .pco-label{
         background-color:$gold;
         width:100%;
         text-align:center;

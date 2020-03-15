@@ -104,6 +104,7 @@ export const pageQuery = graphql`
           descriptions
           stars
           starsCount
+          featured
           img{
             childImageSharp{
               fluid(maxWidth:800, quality:100){
