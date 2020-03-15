@@ -5,6 +5,9 @@ install:
   - npm install -g add travis-ci-cloudfront-invalidation
   - npm install
 script: gatsby build
+branches:
+  only:
+      - master
 deploy:
   provider: s3
   access_key_id: $AWS_KEY
