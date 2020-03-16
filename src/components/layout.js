@@ -4,8 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import Image from 'gatsby-image'
 import { Navbar } from 'reactstrap';
+import { config } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+
+config.autoAddCss = false
 
 const Layout = ({ children, isBlog }) => {
 
