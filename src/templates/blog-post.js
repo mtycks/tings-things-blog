@@ -57,9 +57,15 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                           </Row>
                           
 
-                          {product.descriptions.map((description,index) => (
+                          {product.descriptions && product.descriptions.map((description,index) => (
                             <p key={index} dangerouslySetInnerHTML={{ __html:description }} />
                           ))}
+
+                          {product.video && 
+                            <div className="embed-responsive embed-responsive-16by9">
+                              <iframe title={product.name} className="embed-responsive-item" src={`${product.video}?rel=0`} allowfullscreen></iframe>
+                            </div>
+                          }
                   
                         </li>
                     ))}
@@ -105,6 +111,7 @@ export const pageQuery = graphql`
           stars
           starsCount
           featured
+          video
           img{
             childImageSharp{
               fluid(maxWidth:800, quality:100){
