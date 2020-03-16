@@ -12,12 +12,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const isBlog = true
 
+  const image = (post.frontmatter.og_img) ? post.frontmatter.og_img.publicURL : post.frontmatter.full_img.publicURL
+
   return (
     <Layout location={location} title={siteTitle} isBlog={isBlog}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
-        image={post.frontmatter.full_img.publicURL}
+        image={image}
       />
       <article>
         <header className="blog-post-header">
@@ -127,6 +129,9 @@ export const pageQuery = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        og_img{
+          publicURL
         }
       }
     }
