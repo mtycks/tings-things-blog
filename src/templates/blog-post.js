@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Container, Row, Col } from 'reactstrap'
 import ProductCallout from '../components/product-callout'
+import { FacebookProvider, Comments } from 'react-facebook';
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -75,6 +76,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 }
 
                 <MDXRenderer>{post.body}</MDXRenderer>
+
+                <FacebookProvider appId="458336934908569">
+                  <Comments href="https://tingsthings.com/10-wholesome-tweets-to-get-you-through-another-day-in-quarantine/" />
+                </FacebookProvider>
+
               </section>
 
             </Col>

@@ -42,6 +42,7 @@
     "prismjs": "^1.19.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-facebook": "^8.1.4",
     "react-helmet": "^5.2.1",
     "reactstrap": "^8.4.1",
     "typeface-montserrat": "0.0.75",
