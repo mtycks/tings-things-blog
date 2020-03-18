@@ -42,6 +42,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
+          `gatsby-remark-embedder`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -88,6 +89,7 @@ module.exports = {
         icon: `content/assets/tings-things-icon.png`,
       },
     },
+    `gatsby-plugin-twitter`,
     `gatsby-plugin-react-helmet`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
