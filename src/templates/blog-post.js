@@ -78,7 +78,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 <MDXRenderer>{post.body}</MDXRenderer>
 
                 <FacebookProvider appId="458336934908569">
-                  <Comments href="https://tingsthings.com/10-wholesome-tweets-to-get-you-through-another-day-in-quarantine/" />
+                  <Comments href={`https://tingsthings.com${post.fields.slug}`} />
                 </FacebookProvider>
 
               </section>
@@ -106,6 +106,9 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       body
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
