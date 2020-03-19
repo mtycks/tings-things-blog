@@ -78,7 +78,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 <MDXRenderer>{post.body}</MDXRenderer>
 
                 <FacebookProvider appId="458336934908569">
-                  <Comments href={`https://tingsthings.com${post.fields.slug}`} />
+                  <Comments href={`https://tingsthings.com${post.fields.slug}`} width="100%" />
                 </FacebookProvider>
 
               </section>
