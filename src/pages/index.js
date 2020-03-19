@@ -28,8 +28,7 @@ const BlogIndex = ({ data, location }) => {
 
             <Container className="hp-container">
               <Row>
-                <Col lg={{ size: 8, offset: 2 }} md={{ size: 10, offset: 1 }}>
-                  <h3 className="hp-cards-title">View my latest posts</h3>
+                <Col className="hp-main-col" lg={{ size: 8, offset: 2 }} md={{ size: 10, offset: 1 }}>
                   <div className="homepage-cards">
                     {posts.map(({ node }) => {
                       const title = node.frontmatter.title || node.fields.slug;
