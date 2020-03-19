@@ -88,9 +88,12 @@ iframe{
 }
     .main-logo{
         position:absolute;
-        left:15px;
+        left:0;
         top:15px;
         z-index:10;
+        text-align:center;
+        width:100%;
+        text-align:center;
     }
 
     .main-header-inner{

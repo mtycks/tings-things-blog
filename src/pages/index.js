@@ -17,7 +17,7 @@ const BlogIndex = ({ data, location }) => {
             <div className="main-header">
               <Img alt="Header background" fluid={data.header_bg.childImageSharp.fluid} />
               <div className="main-logo">
-                <Img fluid={data.main_logo_white.childImageSharp.fluid} imgStyle={{objectFit: "contain",objectPosition: "50% 50%",}} style={{width: "40px", display: "inline-block"}} />
+                <Img fluid={data.main_logo_white.childImageSharp.fluid} imgStyle={{objectFit: "contain",objectPosition: "50% 50%",}} style={{width: "40px", display: "inline-block", textAlign:"center"}} />
                 </div>
               <div className="main-header-inner">
                 <div className="main-header-text">
