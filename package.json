@@ -39,7 +39,7 @@
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-sharp": "^2.3.13",
     "node-sass": "^7.0.0",
-    "prismjs": "^1.19.0",
+    "prismjs": "^1.27.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-facebook": "^8.1.4",
